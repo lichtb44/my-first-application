@@ -2,20 +2,20 @@
 
 namespace App\Models;
 
-class Job
-{
-    public static function all()
-    {
-        return [
-            ['id' => 1, 'title' => 'Director', 'salary' => '$50,000'],
-            ['id' => 2, 'title' => 'Programmer', 'salary' => '$10,000'],
-            ['id' => 3, 'title' => 'Teacher', 'salary' => '$40,000'],
-        ];
-    }
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-    public static function find($id)
+class Job extends Model
+{
+    use HasFactory;
+
+    // Laravel assumes the table is 'jobs', but we are using 'job_listings'
+    protected $table = 'job_listings';
+
+    // Optional: if you want to keep a similar find behavior with automatic 404
+    public static function findOrAbort($id)
     {
-        $job = \Illuminate\Support\Arr::first(static::all(), fn($job) => $job['id'] == $id);
+        $job = static::find($id); // Eloquent find
         if (!$job) {
             abort(404);
         }
