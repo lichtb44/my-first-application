@@ -16,8 +16,8 @@ class TagFactory extends Factory
      */
     public function definition(): array
 {
-    return [
-        'name' => fake()->word(),
+     return [
+        'name' => $this->faker->unique()->word(), // ensures no duplicate names
     ];
 }
 

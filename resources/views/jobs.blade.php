@@ -3,12 +3,12 @@
         Jobs Page
     </x-slot:heading>
 
-    <ul class="space-y-2">
+    <div class="space-y-4">
         @foreach ($jobs as $job)
             <li class="border p-4 rounded-lg">
-                <a href="/jobs/{{ $job['id'] }}" class="text-blue-500 hover:underline">
+                <a href="/jobs/{{ $job->id }}" class="text-blue-500 hover:underline">
                     <strong class="text-laracasts">{{ $job->employer->name }}:</strong>
-                    {{ $job['title'] }} pays {{ $job['salary'] }} per year.
+                    {{ $job->title }} pays {{ $job->salary }} per year.
                 </a>
 
                 <!-- Display Tags -->
@@ -21,5 +21,10 @@
                 </div>
             </li>
         @endforeach
-    </ul>
+    </div>
+
+    <!-- Pagination Links -->
+    <div class="mt-6">
+        {{ $jobs->links() }}
+    </div>
 </x-layout>
