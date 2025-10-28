@@ -11,11 +11,10 @@
   <!-- Navigation -->
   <nav class="bg-white shadow-sm">
     <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="/" class="text-xl font-semibold text-gray-900">JobPortal</a>
+      <a href="/" class="text-xl font-semibold text-gray-900" rel="home">JobPortal</a>
       <div class="space-x-4 flex items-center">
         <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-        <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
-        <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
+        <x-nav-link href="/jobs" :active="request()->is('jobs*')">Jobs</x-nav-link>
       </div>
     </div>
   </nav>
