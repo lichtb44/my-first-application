@@ -21,4 +21,21 @@ class Job extends Model
         }
         return $job;
     }
+
+    // Step 1: Define belongsTo relationship to Employer
+    public function employer()
+    {
+        return $this->belongsTo(\App\Models\Employer::class);
+    }
+
+    // Step 2: Define many-to-many relationship to Tags
+    public function tags()
+    {
+        return $this->belongsToMany(
+            \App\Models\Tag::class,   // Related model
+            'job_listing_tag',        // Pivot table name
+            'job_listing_id',         // Foreign key on pivot table for Job
+            'tag_id'                  // Foreign key on pivot table for Tag
+        );
+    }
 }
