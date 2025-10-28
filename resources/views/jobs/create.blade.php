@@ -1,6 +1,11 @@
 <x-layout>
     <x-slot:heading>
         Create Job
+        <!-- Create Job Button (links to same page just for demonstration) -->
+        <a href="{{ route('jobs.create') }}" 
+           class="ml-4 rounded-md bg-indigo-600 px-3 py-2 text-white text-sm font-semibold hover:bg-indigo-500">
+            Create Job
+        </a>
     </x-slot:heading>
 
     <form method="POST" action="/jobs">
@@ -21,7 +26,6 @@
                                 class="block w-full border py-1.5 px-3 rounded-md shadow-sm focus:ring-indigo-600 sm:text-sm"
                                 value="{{ old('title') }}">
                         </div>
-                        <!-- Validation error for title -->
                         @error('title')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror
@@ -35,7 +39,6 @@
                                 class="block w-full border py-1.5 px-3 rounded-md shadow-sm focus:ring-indigo-600 sm:text-sm"
                                 value="{{ old('salary') }}">
                         </div>
-                        <!-- Validation error for salary -->
                         @error('salary')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror
@@ -47,7 +50,7 @@
 
         <!-- Buttons -->
         <div class="mt-6 flex justify-end gap-x-6">
-            <a href="/jobs" class="text-sm font-semibold text-gray-900">Cancel</a>
+            <a href="{{ route('jobs.index') }}" class="text-sm font-semibold text-gray-900">Cancel</a>
             <button type="submit"
                 class="rounded-md bg-indigo-600 px-3 py-2 text-white text-sm font-semibold hover:bg-indigo-500">
                 Save
