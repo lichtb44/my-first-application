@@ -12,6 +12,9 @@ class Job extends Model
     // Laravel assumes the table is 'jobs', but we are using 'job_listings'
     protected $table = 'job_listings';
 
+    // Allow mass assignment for these fields
+    protected $fillable = ['title', 'salary', 'employer_id'];
+
     // Optional: if you want to keep a similar find behavior with automatic 404
     public static function findOrAbort($id)
     {
